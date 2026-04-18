@@ -1,0 +1,98 @@
+.field-error {
+	color: #fff;
+	font-size: 0.88em;
+	font-weight: 600;
+	margin-left: 0.2em;
+	margin-top: 0.1em;
+	display: block;
+	height: 1.2em;
+	text-shadow: 0 1px 4px rgba(180,0,80,0.45);
+}
+
+.form label {
+	display: flex;
+	flex-direction: column;
+	min-height: 62px;
+}
+.alert-success {
+	background: #a1c4fd22;
+	color: #43a1fa;
+	border-radius: 12px;
+	padding: 0.5em 1em;
+	margin-bottom: 0.5em;
+	font-weight: 600;
+}
+.alert-error {
+	background: #fa709a22;
+	color: #fa709a;
+	border-radius: 12px;
+	padding: 0.5em 1em;
+	margin-bottom: 0.5em;
+	font-weight: 600;
+}
+@media (max-width: 700px) {
+	.form {
+		max-width: 98vw;
+		padding: 1.2rem 0.7rem 1rem 0.7rem;
+	}
+}
+.form input.ng-invalid.ng-touched, .form select.ng-invalid.ng-touched {
+	border: 1.5px solid #f06292;
+	background: #fff0f6;
+}
+.form input.ng-valid.ng-touched, .form select.ng-valid.ng-touched {
+	border: 1.5px solid #a5d6a7;
+	background: #f1fff5;
+}
+.form input, .form select {
+	transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.form {
+	background: transparent;
+	border-radius: 0;
+	box-shadow: none;
+	padding: 0;
+	max-width: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	animation: fadeIn 0.7s;
+}
+
+.form input, .form select {
+	font-size: 1rem;
+	border-radius: 16px;
+	border: 1.5px solid #e1bee7;
+	padding: 0.55em 1em;
+	outline: none;
+	margin-bottom: 0;
+	background: #fff;
+	transition: border 0.2s, box-shadow 0.2s;
+	box-shadow: 0 1px 6px rgba(186,104,200,0.07);
+}
+.form input:focus, .form select:focus {
+	border: 1.5px solid #ba68c8;
+	box-shadow: 0 2px 12px rgba(186,104,200,0.13);
+}
+
+.form button {
+	margin-top: 0.2rem;
+	background: linear-gradient(90deg, #f06292, #ba68c8);
+	border-radius: 20px;
+	font-size: 1rem;
+	padding: 0.5em 1.4em;
+	font-weight: 700;
+	box-shadow: 0 2px 8px rgba(186,104,200,0.10);
+	transition: background 0.2s, transform 0.15s;
+}
+.form button:hover {
+	background: linear-gradient(90deg, #ba68c8, #f06292);
+	transform: scale(1.06);
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; transform: scale(0.95); }
+	to { opacity: 1; transform: scale(1); }
+}

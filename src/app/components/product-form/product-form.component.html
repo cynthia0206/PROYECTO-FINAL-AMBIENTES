@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="save()" class="form" novalidate>
+  <div *ngIf="successMsg" class="alert-success">{{successMsg}}</div>
+  <div *ngIf="errorMsg" class="alert-error">{{errorMsg}}</div>
+
+  <label>
+    <input type="text" formControlName="name" required placeholder="Nombre" (blur)="onBlur('name')">
+    <span *ngIf="form.get('name')?.invalid && (form.get('name')?.touched || submitted)" class="field-error">Nombre requerido</span>
+  </label>
+  <label>
+    <input type="text" formControlName="brand" required placeholder="Marca" (blur)="onBlur('brand')">
+    <span *ngIf="form.get('brand')?.invalid && (form.get('brand')?.touched || submitted)" class="field-error">Marca requerida</span>
+  </label>
+  <label>
+    <input type="number" formControlName="price" required min="1" placeholder="Precio" (blur)="onBlur('price')">
+    <span *ngIf="form.get('price')?.invalid && (form.get('price')?.touched || submitted)" class="field-error">Precio válido requerido</span>
+  </label>
+  <label>
+    <select formControlName="category" required (blur)="onBlur('category')">
+      <option value="">Categoría</option>
+      <option>Labial</option>
+      <option>Base</option>
+      <option>Sombras</option>
+      <option>Rubor</option>
+    </select>
+    <span *ngIf="form.get('category')?.invalid && (form.get('category')?.touched || submitted)" class="field-error">Selecciona una categoría</span>
+  </label>
+  <label>
+    <input type="text" formControlName="image" required placeholder="URL Imagen" (blur)="onBlur('image')">
+    <span *ngIf="form.get('image')?.invalid && (form.get('image')?.touched || submitted)" class="field-error">URL de imagen requerida</span>
+  </label>
+  <div style="display:flex; gap:1rem;">
+    <button type="submit">{{editing ? 'Editar ✨' : 'Guardar 💄'}}</button>
+    <button type="button" (click)="cancelEdit()" style="background:#eee;color:#c2185b;">Cancelar</button>
+  </div>
+</form>

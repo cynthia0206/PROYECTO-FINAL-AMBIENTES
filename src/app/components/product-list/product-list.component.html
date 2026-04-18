@@ -1,0 +1,51 @@
+<div class="filters-bar">
+  <input class="search-input" type="text" [(ngModel)]="searchTerm" placeholder="Buscar producto..." />
+  <select class="brand-select" [(ngModel)]="selectedBrand">
+    <option value="">Todas las marcas</option>
+    <option>Maybelline</option>
+    <option>L'Oréal</option>
+    <option>MAC</option>
+  </select>
+  <select class="category-select" [(ngModel)]="selectedCategory">
+    <option value="">Todas las categorías</option>
+    <option>Labial</option>
+    <option>Base</option>
+    <option>Sombras</option>
+    <option>Rubor</option>
+  </select>
+</div>
+
+<!-- Modal confirmación eliminar -->
+<div class="delete-backdrop" *ngIf="showDeleteConfirm"></div>
+<div class="delete-modal" *ngIf="showDeleteConfirm">
+  <div class="delete-modal-icon">🗑️</div>
+  <h3 class="delete-modal-title">¿Eliminar producto?</h3>
+  <p class="delete-modal-msg">Esta acción no se puede deshacer. ¿Estás segura de que deseas eliminar este producto?</p>
+  <div class="delete-modal-actions">
+    <button class="btn-cancel-delete" (click)="cancelDelete()">Cancelar</button>
+    <button class="btn-confirm-delete" (click)="confirmDelete()">Sí, eliminar</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card" *ngFor="let product of filteredProducts()">
+    <button class="fav-btn" [class.favorited]="product.favorited" (click)="toggleFavorite(product, $event)" title="Agregar a favoritos">
+      <span [innerHTML]="product.favorited ? '&#10084;&#65039;' : '&#9825;'" style="font-size:1.5rem;"></span>
+    </button>
+    <img [src]="product.image" alt="">
+    <div class="icon-row">
+      <span *ngIf="product.category === 'Labial'" title="Labial">💄</span>
+      <span *ngIf="product.category === 'Base'" title="Base">🧴</span>
+      <span *ngIf="product.category === 'Sombras'" title="Sombras">🎨</span>
+      <span *ngIf="product.category === 'Rubor'" title="Rubor">🌸</span>
+      <span class="star">★</span>
+    </div>
+    <h3>{{product.name}}</h3>
+    <p>{{product.brand}}</p>
+    <span>${{product.price}}</span>
+    <div style="display:flex; gap:0.5rem; justify-content:center;">
+      <button (click)="edit(product)" title="Editar" style="background:#fff;color:#7b1fa2;border:1.5px solid #ba68c8;">✏️ Editar</button>
+      <button (click)="delete(product.id)">Eliminar</button>
+    </div>
+  </div>
+</div>
